@@ -80,6 +80,11 @@ body {
     background-color: #e0a800;
 }
 
+.tarefa-item{
+    list-style: none;
+    margin-top: 6px;
+}
+
 .task-item-empty {
     background-color: #444;
     padding: 10px;

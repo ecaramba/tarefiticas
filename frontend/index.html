@@ -42,8 +42,8 @@
                 <div class="calendar">
                     <div class="calendar-day">
                         <h5>Seg, 26</h5>
-                        <div >
-                            <ul class="tarefas-dia">
+                        <div class="" >
+                            <ul class="p-0 tarefas-dia">
                                
                             </ul>
                         </div>
@@ -69,6 +69,7 @@
             </main>
         </div>
     </div>
+   
     <!-- Modal de Adicionar/Editar Tarefa -->
     <div class="modal fade" id="modalTarefa" tabindex="-1" aria-labelledby="modalTarefaLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -82,10 +83,16 @@
                         <div class="mb-3">
                             <label for="titulo-tarefa" class="form-label">Título da Tarefa</label>
                             <input type="text" class="form-control" id="titulo-tarefa" placeholder="Insira o título">
+                            <div class="invalid-feedback">
+                                Campo obrigatório
+                              </div>
                         </div>
                         <div class="mb-3">
                             <label for="descricao-tarefa" class="form-label">Descrição</label>
                             <textarea class="form-control" id="descricao-tarefa" rows="3" placeholder="Insira a descrição"></textarea>
+                            <div class="invalid-feedback">
+                                Campo obrigatório
+                              </div>
                         </div>
                         <div class="mb-3">
                             <label for="responsavel-tarefa" class="form-label">Responsável</label>
@@ -107,7 +114,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar alterações</button>
+                    <button id="bt-salvar" type="button" class="btn btn-primary">Salvar alterações</button>
                 </div>
             </div>
         </div>
