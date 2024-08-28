@@ -13,6 +13,19 @@ app.post("/cadastro-tarefa", function(req, res){
     res.send("ok");
 });
 
+app.get("/listar-usuarios", async function(req, res){
+    const mongo = await conexao.connect();
+    const col = mongo.db("edir").collection("usuarios");
+
+    const opt = {
+        projection: {nome: 1} 
+    };
+    const dados = await col.find({}, opt).toArray();
+
+    res.json(dados);
+
+});
+
 app.get("/listar-tarefas", async function(req, res){
     
     const mongo = await conexao.connect();
@@ -23,11 +36,12 @@ app.get("/listar-tarefas", async function(req, res){
     res.json(dados);
 });
 
-app.get("/ler-tarefa", async function(req, res){
+app.get("/ler-tarefa/:id", async function(req, res){
     const mongo = await conexao.connect();
     const col = mongo.db("edir").collection("tarefas");
 
-    const id = new ObjectId('66ce66996ac4ec0673de793b');
+    // pega o id solicitado
+    const id = new ObjectId(req.params.id);
     const tarefa = await col.findOne({_id: id})
 
     res.json(tarefa);
