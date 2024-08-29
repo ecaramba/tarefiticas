@@ -43,18 +43,21 @@ $(document).ready(function(){
         let tarefa = {
             titulo: $("#titulo-tarefa").val(),
             descricao: $("#descricao-tarefa").val(),
-            dataIni: diaIni,
+            dataIni: diaIni.toISOString(),
             dataFim: $("#data-fim").val() + "T03:00:00.000Z",
             responsavel: {
                 _id: $("#responsavel-tarefa").val(),
                 nome: $("#responsavel-tarefa option:selected").text()
-            }
+            },
+            id: $("#id-tarefa").val()
         };
 
         console.log(tarefa);
 
         $.post("http://localhost:3003/cadastro-tarefa", tarefa, function(retorno, status){
             console.log(retorno);
+            $("#modalTarefa").modal("hide");
+            location.reload();
         }); // fim post
 
 
@@ -75,6 +78,7 @@ $(document).ready(function(){
             $("#responsavel-tarefa").val(dados.responsavel._id);
             $("#data-inicio").val(diaIni);
             $("#data-fim").val(diaFim);
+            $("#id-tarefa").val(codigo)
         });
         
     }); // fim do click editar
