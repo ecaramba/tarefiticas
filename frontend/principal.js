@@ -97,7 +97,7 @@ $(document).ready(function(){
             location.reload();
         });
 
-    });
+    }); // fim do delete
 
 });
 
