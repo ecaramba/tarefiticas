@@ -84,6 +84,23 @@ app.get("/ler-tarefa/:id", async function(req, res){
 
 });
 
+app.post("/logar", async function(req, res){
+    const mongo = await conexao.connect();
+    const col = mongo.db("edir").collection("usuarios");
+
+    let email = req.body.email;
+    let senha = req.body.senha;
+
+    let usuario = await col.findOne({email: email, senha: senha});
+
+    if (!usuario){
+        res.json({erro: "Usuário ou senha não encontrados"});    
+    } else {
+        res.json(usuario);
+    }
+
+});
+
 app.listen(3003, function(){
     console.log("Servidor iniciado");
 });

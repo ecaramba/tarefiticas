@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+    let usuario = localStorage.getItem("usuario");
+    if (!usuario) {
+        location.assign("/login");
+    }
+
     $.getJSON("http://localhost:3003/listar-tarefas", function(valores){
         
         valores.forEach(function(item, idx){
